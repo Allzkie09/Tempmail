@@ -64,7 +64,7 @@
 
     <center>
 
-   <img src="https://i.ibb.co/XsmtcNw/download-21.jpg" height="90px" width="90px" style="border-radius:50px; border:3px solid red; margin-top:30px; margin-bottom:30px;"><h1 style="color:red;">Tempmail V2</h1><p>Created by Y3sh4 </p>
+   <img src="https://i.ibb.co/XsmtcNw/download-21.jpg" height="90px" width="90px" style="border-radius:50px; border:3px solid red; margin-top:30px; margin-bottom:30px;"><h1 style="color:red;">Tempmail V2</h1><p>Created by VINCENT MAGTOLIS DEV </p>
    </center>
     <hr>
 <center>
@@ -81,7 +81,7 @@
     <footer id='status'>
         Powered By <a href='https://1secmail.com'>1secMail</a>
         -
-        Created By <a href='https://www.facebook.com/profile.php?id=100081917928946'>Yesha</a>
+        Created By <a href='https://www.facebook.com/vincent.09123455'>Vincent</a>
     </footer>
 
     <script src='https://code.jquery.com/jquery.min.js'></script>
@@ -93,79 +93,4 @@
         function genEmail() {
             $.getJSON("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1", (res) => {
                 $('#addr').val(res[0]);
-                refreshMail();
-            })
-        }
-
-        function refreshMail() {
-            addr = $('#addr').val();
-            if (!addr) {
-                alert("Please generate or input an email address first!");
-                return
-            }
-
-            user = addr.split('@')[0];
-            domain = addr.split('@')[1];
-
-            $.getJSON(`https://www.1secmail.com/api/v1/?action=getMessages&login=${user}&domain=${domain}`, (emails) => {
-                $('#emails').empty();
-
-                $('#emails').append($(`
-                    <tr>
-<th>Verification Code :</th>
-                    </tr>
-                `));
-
-                for (i in emails) {
-                    email = emails[i];
-
-                    $('#emails').append($(`
-                        <tr class='subject'>
-
-
-                            <td>${email['subject']}</td>
-
-
-                        </tr>
-                    `))
-                }
-
-            })
-        }
-
-        function loadEmail(id) {
-            addr = $('#addr').val();
-            if (!addr) {
-                alert("Please generate or input an email address first!");
-                return
-            }
-
-            user = addr.split('@')[0];
-            domain = addr.split('@')[1];
-
-            $.getJSON(`https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`, (email) => {
-                elm = $(`#${id}`);
-                if (email['htmlBody']) {
-                    elm.html(email['htmlBody']);
-                } else {
-                    elm.text(email['body']);
-                }
-
-                atts = $('<div></div>');
-                for (i in email['attachments']) {
-                    file = email['attachments'][i];
-
-                    atts.append($(`<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file['filename']}'>${file['filename']}</a>`));
-                }
-                elm.append(atts);
-            })
-        }
-
-        $(function() {
-            genEmail();
-        })
-
-    </script>
-    </center>
-</body>
-</html>
+    
