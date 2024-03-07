@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Includes', 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(3000, () => {
+  console.log(`Server is running at http://localhost:5000`);
 });
